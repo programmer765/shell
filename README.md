@@ -1,34 +1,22 @@
-[![progress-banner](https://backend.codecrafters.io/progress/shell/f1f65575-f26d-4c3f-a057-0c5208c6737a)](https://app.codecrafters.io/users/codecrafters-bot?r=2qF)
+# This is a custom shell build on typescript
 
-This is a starting point for TypeScript solutions to the
-["Build Your Own Shell" Challenge](https://app.codecrafters.io/courses/shell/overview).
-
-In this challenge, you'll build your own POSIX compliant shell that's capable of
-interpreting shell commands, running external programs and builtin commands like
-cd, pwd, echo and more. Along the way, you'll learn about shell command parsing,
-REPLs, builtin commands, and more.
-
-**Note**: If you're viewing this repo on GitHub, head over to
-[codecrafters.io](https://codecrafters.io) to try the challenge.
-
-# Passing the first stage
-
-The entry point for your `shell` implementation is in `app/main.ts`. Study and
-uncomment the relevant code, and push your changes to pass the first stage:
-
-```sh
-git commit -am "pass 1st stage" # any msg
-git push origin master
+This is a shell build using typescript to replicate some of the feature of original shell which can also contain some custom commands which is not present in original shell.
+For now it contains general shell commands like 
 ```
+pwd     # to view the current path
+echo    # prints the typed msg in it
+exit 0  # exits the terminal with code 0 
+``` 
 
-Time to move on to the next stage!
+To run this shell on your local machine simply download the code 
 
-# Stage 2 & beyond
+1. Windows: 
+   1. Open git bash
+   2. go to the downloaded code folder
+   3. Run ```bash your_program.sh```
 
-Note: This section is for stages 2 and beyond.
 
-1. Ensure you have `bun (1.2)` installed locally
-1. Run `./your_program.sh` to run your program, which is implemented in
-   `app/main.ts`.
-1. Commit your changes and run `git push origin master` to submit your solution
-   to CodeCrafters. Test output will be streamed to your terminal.
+2. Mac / Linux:
+   1. Open the terminal
+   2. go to the downloaded code folder
+   3. Run ```./your_program.sh```
