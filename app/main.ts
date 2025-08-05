@@ -5,8 +5,16 @@ const rl = createInterface({
   output: process.stdout,
 });
 
-// Uncomment this block to pass the first stage
-rl.question("$ ", (answer) => {
-  console.log(`${answer}: command not found`);
-  rl.close();
-});
+
+
+const terminalFunction = () => {
+
+  rl.question("$ ", (answer) => {
+    console.log(`${answer}: command not found`);
+    // Recursively call the function to keep prompting for input
+    terminalFunction();
+    // rl.close();
+  });
+}
+
+terminalFunction();
