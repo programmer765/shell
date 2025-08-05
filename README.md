@@ -8,7 +8,7 @@ echo    # prints the typed msg in it
 exit 0  # exits the terminal with code 0 
 ``` 
 
-To run this shell on your local machine simply download the code 
+To run this shell on your local machine simply download the code and do ```npm install``` then follow the below steps for your os:
 
 1. Windows: 
    1. Open git bash
@@ -20,3 +20,7 @@ To run this shell on your local machine simply download the code
    1. Open the terminal
    2. go to the downloaded code folder
    3. Run ```./your_program.sh```
+
+
+*** Note: For windows you must have bun installed in your pc
+   Go to [text](bun.com) to install bun in your pc
