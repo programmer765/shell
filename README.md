@@ -23,4 +23,4 @@ To run this shell on your local machine simply download the code and do ```npm i
 
 
 *** Note: For windows you must have bun installed in your pc
-   Go to [text](bun.com) to install bun in your pc
+   Go to [Install bun](https://bun.com) to install bun in your pc
