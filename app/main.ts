@@ -1,4 +1,5 @@
 import { createInterface } from "readline";
+import { existsSync } from "fs";
 
 const rl = createInterface({
   input: process.stdin,
@@ -7,26 +8,37 @@ const rl = createInterface({
 });
 
 
+const builtinCommands = ["echo", "exit", "type"]
+const isWindows = process.platform === "win32";
+const paths = process.env.PATH?.split(isWindows ? ";" : ":") || [];
 
-// const terminalFunction = () => {
+const type = (command: string) => {
+  // Check if the command exists in the predefined commands list
+  if (builtinCommands.includes(command)) {
 
-//   rl.question("$ ", (answer) => {
+    console.log(`${command} is a shell builtin`);
 
-//     if(answer.trim() === "exit 0") {
-//       process.exit(0)
-//     }
+  } else {
 
-//     console.log(`${answer}: command not found`);
-//     // Recursively call the function to keep prompting for input
-//     terminalFunction();
-//     // rl.close();
-//   });
-// }
+    // Check if the command exists in the filesystem
+    for (const path of paths) {
 
-// terminalFunction();
+      // Construct the file path based on the operating system
+      const filePath = 
+        isWindows ? 
+        `${path}\\${command}` // Use backslash for Windows paths
+        :
+        `${path}/${command}`; // Use forward slash for Unix-like paths
 
-const commands = ["echo", "type"]
-
+      // Check if the file exists at the specified path
+      if (existsSync(filePath)) {
+        console.log(`${command}: is ${filePath}`);
+        return;
+      }
+    }
+    console.log(`${command}: not found`);
+  }
+};
 
 const handleCommands = (line: string) => {
 
@@ -59,13 +71,7 @@ const handleCommands = (line: string) => {
     // Extract the command name after "type "
     const commandName = line.slice(5).trim();
 
-    // Check if the command exists in the predefined commands list
-    if (commands.includes(commandName)) {
-      console.log(`${commandName} is a shell builtin`);
-    } else {
-      console.log(`${commandName}: not found`);
-    }
-
+    type(commandName);
     return
   }
 
