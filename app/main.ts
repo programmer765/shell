@@ -63,7 +63,7 @@ const type = (command: string) => {
     if(result.found === true) {
       console.log(`${command}: is ${result.filePath}`);
     } else {
-      console.log(`${command}: not found`);
+      console.error(`${command}: not found`);
     }
   }
 };
@@ -130,6 +130,25 @@ const handleCommands = (line: string) => {
 
 
 
+  // Handle "cd" command
+  if(command === "cd") {
+
+    // Change the current working directory
+    const dir = line.slice(3).trim();
+    if (dir) {
+      try {
+        process.chdir(dir);
+      } catch (error) {
+        console.error(`cd: ${dir}: No such file or directory`);
+      }
+    }
+
+    return;
+  }
+
+
+
+
   if (builtinCommands.includes(command) === false) {
   // execute an exe file
     // const exeFileName = isWindows ? `${command}.exe` : `./${command}`;
@@ -161,14 +180,14 @@ const handleCommands = (line: string) => {
       return;
     }
     else {
-      console.log(`${command}: command not found`);
+      console.error(`${command}: command not found`);
       return;
     }
   }
 
 
   // If the command is not recognized, print a "not found" message
-  console.log(`${command}: command not found`);
+  console.error(`${command}: command not found`);
 }
 
 
