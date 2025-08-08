@@ -12,6 +12,7 @@ const rl = createInterface({
 const builtinCommands = ["echo", "exit", "type", "pwd"]
 const isWindows = process.platform === "win32";
 const ENVpath = process.env.PATH?.split(isWindows ? ";" : ":")[0] || "";
+const homePath = process.env.HOME || process.env.USERPROFILE || "";
 const paths = ENVpath.length > 0 ? ENVpath.split(isWindows ? "\\" : "/") : [];
 // console.log(ENVpath);
 
@@ -133,9 +134,13 @@ const handleCommands = (line: string) => {
   // Handle "cd" command
   if(command === "cd") {
 
-    // Change the current working directory
+    // get the directory name
     const dir = line.slice(3).trim();
-    if (dir) {
+
+    // change to home directory
+    if(dir === "~") {
+      process.chdir(homePath);
+    } else if (dir) {       // change to specified directory
       try {
         process.chdir(dir);
       } catch (error) {
