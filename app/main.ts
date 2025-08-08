@@ -9,7 +9,7 @@ const rl = createInterface({
 });
 
 
-const builtinCommands = ["echo", "exit", "type"]
+const builtinCommands = ["echo", "exit", "type", "pwd"]
 const isWindows = process.platform === "win32";
 const ENVpath = process.env.PATH?.split(isWindows ? ";" : ":")[0] || "";
 const paths = ENVpath.length > 0 ? ENVpath.split(isWindows ? "\\" : "/") : [];
@@ -112,10 +112,19 @@ const handleCommands = (line: string) => {
   if(command === "type") {
 
     // Extract the command name after "type "
-    const commandName = line.slice(5).trim();
+    const commandMsg = line.slice(5).trim();
 
-    type(commandName);
+    type(commandMsg);
     return
+  }
+
+
+
+
+  // Handle "pwd" command
+  if(command === "pwd") {
+    console.log(process.cwd());
+    return;
   }
 
 

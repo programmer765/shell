@@ -1,3 +1,5 @@
 node_modules/
 remote_origins.txt
 .gitignore
+script.js
+script.exe
