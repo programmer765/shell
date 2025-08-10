@@ -100,7 +100,7 @@ const handleCommands = (line: string) => {
   if(command === "echo") {
 
     // Extract the message after "echo "
-    const message = line.slice(5).trim();
+    const message = line.slice(5).trim().replace(/\s+/g, " ");
     
     console.log(message);
     return;
