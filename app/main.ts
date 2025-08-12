@@ -1,6 +1,7 @@
 import { createInterface } from "readline";
 import { existsSync } from "fs";
 import { execFileSync } from "child_process";
+import { parse } from "shell-quote";
 
 const rl = createInterface({
   input: process.stdin,
@@ -99,21 +100,10 @@ const handleCommands = (line: string) => {
   // Handle "echo" command
   if(command === "echo") {
 
-    // Extract the message after "echo "
-    const matches : string[] = line.match(/'([^']*)'|[^']+/g) || []; // capture content inside quotes without quotes
+    const args = line.slice(5).trim();
+    const parsed = parse(args);
+    const message = parsed.length > 0 ? parsed.join(" ") : "";
 
-    const message = matches
-                    .map((part) => {
-                      if (part.startsWith("'") && part.endsWith("'")) {
-                        return part.slice(1, -1); // Remove quotes
-                      } else {
-                        // This is the outside part → trim multiple spaces
-                        return part.replace(/\s+/g, ' ').trim();
-                      }
-                    })
-                    .filter(Boolean)
-                    .join(' ');
-    
     console.log(message);
     return;
   }

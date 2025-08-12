@@ -14,10 +14,16 @@ importers:
       fs:
         specifier: 0.0.1-security
         version: 0.0.1-security
+      shell-quote:
+        specifier: ^1.8.3
+        version: 1.8.3
     devDependencies:
       '@types/bun':
         specifier: latest
         version: 1.2.19(@types/react@19.1.9)
+      '@types/shell-quote':
+        specifier: ^1.7.5
+        version: 1.7.5
 
 packages:
 
@@ -29,6 +35,9 @@ packages:
 
   '@types/react@19.1.9':
     resolution: {integrity: sha512-WmdoynAX8Stew/36uTSVMcLJJ1KRh6L3IZRx1PZ7qJtBqT3dYTgyDTx8H1qoRghErydW7xw9mSJ3wS//tCRpFA==}
+
+  '@types/shell-quote@1.7.5':
+    resolution: {integrity: sha512-+UE8GAGRPbJVQDdxi16dgadcBfQ+KG2vgZhV1+3A1XmHbmwcdwhCUwIdy+d3pAGrbvgRoVSjeI9vOWyq376Yzw==}
 
   bun-types@1.2.19:
     resolution: {integrity: sha512-uAOTaZSPuYsWIXRpj7o56Let0g/wjihKCkeRqUBhlLVM/Bt+Fj9xTo+LhC1OV1XDaGkz4hNC80et5xgy+9KTHQ==}
@@ -43,6 +52,10 @@ packages:
 
   fs@0.0.1-security:
     resolution: {integrity: sha512-3XY9e1pP0CVEUCdj5BmfIZxRBTSDycnbqhIOGec9QYtmVH2fbLpj86CFWkrNOkt/Fvty4KZG5lTglL9j/gJ87w==}
+
+  shell-quote@1.8.3:
+    resolution: {integrity: sha512-ObmnIF4hXNg1BqhnHmgbDETF8dLPCggZWBjkQfhZpbszZnYur5DUljTcCHii5LC3J5E0yeO/1LIMyH+UvHQgyw==}
+    engines: {node: '>= 0.4'}
 
   undici-types@7.8.0:
     resolution: {integrity: sha512-9UJ2xGDvQ43tYyVMpuHlsgApydB8ZKfVYTsLDhXkFL/6gfkp+U8xTGdh8pMJv1SpZna0zxG1DwsKZsreLbXBxw==}
@@ -63,6 +76,8 @@ snapshots:
     dependencies:
       csstype: 3.1.3
 
+  '@types/shell-quote@1.7.5': {}
+
   bun-types@1.2.19(@types/react@19.1.9):
     dependencies:
       '@types/node': 24.1.0
@@ -73,5 +88,7 @@ snapshots:
   csstype@3.1.3: {}
 
   fs@0.0.1-security: {}
+
+  shell-quote@1.8.3: {}
 
   undici-types@7.8.0: {}
