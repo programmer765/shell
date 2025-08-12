@@ -100,14 +100,16 @@ const handleCommands = (line: string) => {
   if(command === "echo") {
 
     // Extract the message after "echo "
-    const message = line.split(/'([^']*)'/) // capture content inside quotes without quotes
-                    .map((part, index) => {
-                      if (index % 2 === 1) {
-                        // This is the inside-of-quotes part
-                        return part;
+    const matches : string[] = line.match(/'([^']*)'|[^']+/g) || []; // capture content inside quotes without quotes
+
+    const message = matches
+                    .map((part) => {
+                      if (part.startsWith("'") && part.endsWith("'")) {
+                        return part.slice(1, -1); // Remove quotes
+                      } else {
+                        // This is the outside part → trim multiple spaces
+                        return part.replace(/\s+/g, ' ').trim();
                       }
-                      // This is the outside part → trim multiple spaces
-                      return part.replace(/\s+/g, ' ').trim();
                     })
                     .filter(Boolean)
                     .join(' ');
