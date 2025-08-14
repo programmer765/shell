@@ -159,6 +159,8 @@ const handleCommands = (line: string) => {
   if (builtinCommands.includes(command) === false) {
   // execute an exe file
     // const exeFileName = isWindows ? `${command}.exe` : `./${command}`;
+    const parsed = parse(command);
+    const exeFileName = parsed.length > 0 ? parsed.join(" ") : command;
     const isexeFilePresent = isFilePresent(command);
 
     // Check if the file exists in the current directory or as an executable
